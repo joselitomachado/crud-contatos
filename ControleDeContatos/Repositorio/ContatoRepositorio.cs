@@ -11,7 +11,7 @@ namespace ControleDeContatos.Repositorio
             this._context = bancoContext;
         }
 
-        public ContatoModel ListarPorId(int id)
+        public ContatoModel BuscarPorId(int id)
         {
             return _context.Contatos.FirstOrDefault(x => x.Id == id);
         }
@@ -31,7 +31,7 @@ namespace ControleDeContatos.Repositorio
 
         public ContatoModel Atualizar(ContatoModel contato)
         {
-            ContatoModel contatoDB = ListarPorId(contato.Id);
+            ContatoModel contatoDB = BuscarPorId(contato.Id);
 
             if (contatoDB == null) throw new Exception("Houve um erro na atualização do contato!");
 
@@ -47,7 +47,7 @@ namespace ControleDeContatos.Repositorio
 
         public bool Apagar(int id)
         {
-            ContatoModel contatoDB = ListarPorId(id);
+            ContatoModel contatoDB = BuscarPorId(id);
 
             if (contatoDB == null) throw new Exception("Houve um erro na deleção do contato!");
 
